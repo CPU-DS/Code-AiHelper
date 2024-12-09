@@ -1,29 +1,42 @@
 # LoRA-Finetuned Model  
 
-本项目展示了如何使用 [LoRA (Low-Rank Adaptation)](https://arxiv.org/abs/2106.09685) 微调一个基础模型，以实现高效的参数调整和定制化应用。
+本项目展示了如何基于 transformers、peft 等框架，使用 Qwen2.5-7B-Instruct 模型在数据集上进行Lora微调训练，同时使用 SwanLab 监控训练过程与评估模型效果，以实现高效的参数调整和定制化应用。
 
-## 项目特色  
-- 使用 LoRA 微调了一个基础大模型。  
-- 高效的微调方式，仅需更新小部分参数。  
-- 提供清晰的训练流程和推理代码。  
+## 目录  
+- [文件结构](#文件结构)  
+- [快速开始](#快速开始)  
+  - [环境安装](#环境安装)  
+  - [准备数据](#准备数据)  
+  - [开始训练](#开始训练)  
+  - [推理测试](#推理测试)  
+- [训练细节](#训练细节)  
+- [模型效果](#模型效果)  
+- [许可证](#许可证)    
 
 ## 文件结构  
 ```
-|-- README.md # 项目说明文档
-|-- requirements.txt # 依赖库
-|-- data/ # 训练数据目录（可自行替换）
-|-- scripts/ # 训练和推理脚本
-  |-- train.py # 微调脚本
-  |-- infer.py # 推理脚本
-|-- model/ # 模型存储目录
-  |-- base_model/ # 基础模型
-  |-- lora_adapter/ # LoRA 微调权重
+|-- README.md                 # 项目说明文档  
+|-- requirements.txt          # 项目依赖库  
+|-- data/                     # 训练和验证数据目录  
+    |-- train.json            # 训练数据集  
+    |-- val.json              # 验证数据集  
+|-- scripts/                  # 项目脚本目录  
+    |-- train.py              # LoRA 微调训练脚本  
+    |-- infer.py              # 推理脚本  
+|-- model/                    # 模型存储目录  
+    |-- base_model/           # 基础模型存放路径  
+    |-- lora_adapter/         # 微调后模型权重存放路径  
+|-- docs/                     # 文档存储目录  
+    |-- experiment_report.md  # 实验报告  
+|-- examples/                 # 示例存储目录  
+    |-- sample_input.txt      # 输入示例  
+    |-- sample_output.txt     # 输出示例  
 ```
 
 ## 快速开始  
 
 ### 1. 环境安装  
-确保你已经安装 Python 3.8 或更高版本。使用以下命令安装依赖：  
+实验使用Python 3.10版本。使用以下命令安装依赖：  
 ```bash
 pip install -r requirements.txt
 ```
