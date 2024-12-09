@@ -131,7 +131,7 @@ python scripts/request.py
 ## 模型效果
 微调后的模型在纠正代码错误上的准确率提升了26.17%，达到了81.76%。
 
-微调后的模型见[LoRA_model](https://github.com/Jiangcl5/Code-AiHelper/tree/LoRA_model)
+微调后的模型参数见[LoRA_model](https://github.com/Jiangcl5/Code-AiHelper/tree/LoRA_model)
 
 ## 许可证
 本项目基于 MIT License 发布。详情请参阅 LICENSE。
