@@ -9,7 +9,8 @@
   - [准备数据](#准备数据)
   - [加载模型](#加载模型)  
   - [开始微调](#开始微调)  
-  - [推理测试](#推理测试)  
+  - [推理测试](#推理测试)
+  - [部署模型](#部署模型)
 - [模型效果](#模型效果)  
 - [许可证](#许可证)    
 
@@ -102,6 +103,27 @@ python scripts/train.py
 使用微调后的模型进行推理：
 ```bash
 python scripts/infer.py
+```
+
+### 部署模型
+设置访问令牌，在命令行中输入：
+```bash
+export API_KEY="your_api_key_here"
+```
+在命令行输入以下命令启动api服务：
+```bash
+python scripts/api.py
+```
+加载完毕后出现如下信息说明成功。
+```
+INFO:     Started server process [583718]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:5040 (Press CTRL+C to quit)
+```
+使用 python 中的 requests 库进行调用:
+```bash
+python scripts/request.py
 ```
 
 ## 模型效果
