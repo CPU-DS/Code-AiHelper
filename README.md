@@ -1,6 +1,6 @@
 # LoRA-Finetuned Model  
 
-本项目展示了如何使用 [LoRA (Low-Rank Adaptation)](https://arxiv.org/abs/2106.09685) 微调一个基础模型，以实现高效的参数调整和定制化应用。本项目适合那些希望在资源有限的情况下快速完成模型微调的开发者和研究人员。  
+本项目展示了如何使用 [LoRA (Low-Rank Adaptation)](https://arxiv.org/abs/2106.09685) 微调一个基础模型，以实现高效的参数调整和定制化应用。
 
 ## 项目特色  
 - 使用 LoRA 微调了一个基础大模型。  
@@ -8,16 +8,17 @@
 - 提供清晰的训练流程和推理代码。  
 
 ## 文件结构  
+```
 |-- README.md # 项目说明文档
 |-- requirements.txt # 依赖库
 |-- data/ # 训练数据目录（可自行替换）
 |-- scripts/ # 训练和推理脚本
-|-- train.py # 微调脚本
-|-- infer.py # 推理脚本
+  |-- train.py # 微调脚本
+  |-- infer.py # 推理脚本
 |-- model/ # 模型存储目录
-|-- base_model/ # 基础模型
-|-- lora_adapter/ # LoRA 微调权重
-
+  |-- base_model/ # 基础模型
+  |-- lora_adapter/ # LoRA 微调权重
+```
 
 ## 快速开始  
 
