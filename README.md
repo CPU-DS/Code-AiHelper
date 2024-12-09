@@ -23,7 +23,9 @@
     |-- val.json              # 验证数据集  
 |-- scripts/                  # 项目脚本目录  
     |-- train.py              # LoRA 微调训练脚本  
-    |-- infer.py              # 推理脚本  
+    |-- infer.py              # 推理脚本
+    |-- api.py                # 模型部署脚本
+    |-- request.py            # 调用api脚本
 |-- model/                    # 模型存储目录  
     |-- base_model/           # 基础模型存放路径  
     |-- lora_adapter/         # 微调后模型权重存放路径  
