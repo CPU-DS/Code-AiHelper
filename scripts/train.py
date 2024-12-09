@@ -64,12 +64,12 @@ def predict(messages, model, tokenizer):
 model_dir = snapshot_download("Qwen/Qwen2.5-Coder-7B-Instruct", cache_dir="../model/base_model", revision="master")
 
 # Transformers加载模型权重
-tokenizer = AutoTokenizer.from_pretrained("../model/base_model/Qwen/Qwen2.5-Coder-7B-Instruct/", use_fast=False, trust_remote_code=True)
-model = AutoModelForCausalLM.from_pretrained("../model/base_model/Qwen/Qwen2.5-Coder-7B-Instruct/", device_map="auto", torch_dtype=torch.bfloat16)
+tokenizer = AutoTokenizer.from_pretrained("model/base_model/Qwen/Qwen2.5-Coder-7B-Instruct/", use_fast=False, trust_remote_code=True)
+model = AutoModelForCausalLM.from_pretrained("model/base_model/Qwen/Qwen2.5-Coder-7B-Instruct/", device_map="auto", torch_dtype=torch.bfloat16)
 model.enable_input_require_grads()  # 开启梯度检查点时，要执行该方法
 
 # 处理数据集
-train_jsonl_path = "../data/train.jsonl"
+train_jsonl_path = "data/train.jsonl"
 train_df = pd.read_json(train_jsonl_path, lines=True)[3:]
 train_ds = Dataset.from_pandas(train_df)
 train_dataset = train_ds.map(process_func, remove_columns=train_ds.column_names)
@@ -95,7 +95,7 @@ config = LoraConfig(
 peft_model = get_peft_model(model, config)
 
 args = TrainingArguments(
-    output_dir="../model/lora_adapter/Qwen2.5-Coder-7b",
+    output_dir="model/lora_adapter/Qwen2.5-Coder-7b",
     per_device_train_batch_size=2,
     gradient_accumulation_steps=8,
     logging_steps=100,
