@@ -61,7 +61,7 @@ def predict(messages, model, tokenizer):
 
 
 # 在modelscope上下载Qwen模型到本地目录下
-model_dir = snapshot_download("Qwen/Qwen2.5-Coder-7B-Instruct", cache_dir="../model/base_model", revision="master")
+model_dir = snapshot_download("Qwen/Qwen2.5-Coder-7B-Instruct", cache_dir="model/base_model", revision="master")
 
 # Transformers加载模型权重
 tokenizer = AutoTokenizer.from_pretrained("model/base_model/Qwen/Qwen2.5-Coder-7B-Instruct/", use_fast=False, trust_remote_code=True)
