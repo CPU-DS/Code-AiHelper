@@ -131,14 +131,13 @@ python scripts/request.py
 ## 模型效果
 微调后的模型在纠正代码错误上的准确率提升了26.17%，达到了81.76%。
 
-微调后的模型参数见[LoRA_model](https://github.com/Jiangcl5/Code-AiHelper/tree/LoRA_model)
+微调后的模型参数见[huggingface](https://huggingface.co/monidew/Code-AiHelper)
 
 ## 许可证
 本项目基于 MIT License 发布。详情请参阅 LICENSE。
 
 ## 联系方式
 如果你对本项目有任何疑问或建议，欢迎通过以下方式联系：
-- Email: your_email@example.com
 - [GitHub Issues](https://github.com/Jiangcl5/FineTuneModel/issues)
 
 欢迎 Star 和 Fork！😊
