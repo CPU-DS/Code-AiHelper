@@ -2,20 +2,20 @@
 
 本项目展示了如何基于 transformers、peft 等框架，使用 Qwen2.5-Coder-7B-Instruct 模型在代码数据集上进行Lora微调训练，以实现高效的参数调整和定制化应用。
 
-## 目录  
-- [文件结构](#文件结构)  
-- [快速开始](#快速开始)  
-  - [环境安装](#环境安装)  
-  - [准备数据](#准备数据)
-  - [加载模型](#加载模型)  
-  - [开始微调](#开始微调)  
-  - [推理测试](#推理测试)
-  - [部署模型](#部署模型)
-- [模型效果](#模型效果)  
-- [许可证](#许可证)
-- [联系方式](#联系方式) 
+## 📑 目录  
+- [📁 文件结构](#📁文件结构)  
+- [🚀 快速开始](#🚀快速开始)  
+  - [⚙️ 环境安装](#⚙️环境安装)  
+  - [📊 准备数据](#📊准备数据)
+  - [📦 加载模型](#📦加载模型)  
+  - [🎛️ 开始微调](#🎛️开始微调)  
+  - [🧪 推理测试](#🧪推理测试)
+  - [🌐 部署模型](#🌐部署模型)
+- [🌟 模型效果](#🌟模型效果)  
+- [📜 许可证](#📜许可证)
+- [📬 联系方式](#📬联系方式) 
 
-## 文件结构  
+## 📁 文件结构  
 ```
 |-- README.md                 # 项目说明文档  
 |-- data/                     # 训练和验证数据目录
@@ -32,9 +32,9 @@
     |-- lora_adapter/         # 微调后模型权重存放路径  
 ```
 
-## 快速开始  
+## 🚀 快速开始  
 
-### 环境安装  
+### ⚙️ 环境安装  
 实验基础环境如下：
 ```
 Ubuntu 22.04
@@ -56,7 +56,7 @@ pip install datasets==2.21.0
 pip install swanlab==0.3.23
 ```
 
-### 准备数据
+### 📊 准备数据
 1. 由于数据来自学生对Python题目的回答，存在数据相似度过高的问题。实验通过minHash方法来评估代码之间的相似度。对于相似度阈值大于0.7的代码记录，仅保留一条记录；而对于相似度不高于0.7的记录，则全部保留。
 ```bash
 python data/minHash_de.py
@@ -72,7 +72,7 @@ python data/minHash_de.py
 }
 ```
 
-### 加载模型
+### 📦 加载模型
 使用modelscope中的snapshot_download下载模型，然后加载到 Transformers 中进行训练：
 ```python
 from modelscope import snapshot_download, AutoTokenizer
@@ -88,7 +88,7 @@ model = AutoModelForCausalLM.from_pretrained("base_model/Qwen/Qwen2.5-Coder-7B-I
 model.enable_input_require_grads()  # 开启梯度检查点时，要执行该方法
 ```
 
-### 开始微调
+### 🎛️ 开始微调
 1. 下载并加载Qwen2.5-7B-Coder-Instruct模型
 3. 加载数据集，取前3条数据进行主观评测
 4. 配置Lora，参数为r=64, lora_alpha=16, lora_dropout=0.1
@@ -102,13 +102,13 @@ python scripts/train.py
 
 注意：首次使用SwanLab，需要先在官网注册一个账号并在用户设置页面复制API Key，然后在训练开始提示登录时粘贴，后续无需再次登录。
 
-### 推理测试
+### 🧪 推理测试
 使用微调后的模型进行推理：
 ```bash
 python scripts/infer.py
 ```
 
-### 部署模型
+### 🌐 部署模型
 设置访问令牌，在命令行中输入：
 ```bash
 export API_KEY="your_api_key_here"
@@ -129,15 +129,15 @@ INFO:     Uvicorn running on http://0.0.0.0:5040 (Press CTRL+C to quit)
 python scripts/request.py
 ```
 
-## 模型效果
+## 🌟 模型效果
 微调后的模型在纠正代码错误上的准确率提升了26.17%，达到了81.76%。
 
 微调后的模型参数见[huggingface](https://huggingface.co/monidew/Code-AiHelper)
 
-## 许可证
+## 📜 许可证
 本项目基于 MIT License 发布。详情请参阅 LICENSE。
 
-## 联系方式
+## 📬 联系方式
 如果你对本项目有任何疑问或建议，欢迎通过以下方式联系：
 - [GitHub Issues](https://github.com/Jiangcl5/FineTuneModel/issues)
 
