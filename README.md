@@ -1,6 +1,6 @@
 # Code-AiHelper 
 
-本项目展示了如何基于 transformers、peft 等框架，使用 Qwen2.5-Coder-7B-Instruct 模型在代码数据集上进行Lora微调训练，以实现高效的参数调整和定制化应用。
+本项目展示了如何基于 transformers、peft 等框架，使用 Qwen2.5-Coder-7B-Instruct 模型在代码数据集上进行 LoRA 微调训练，以实现高效的参数调整和定制化应用。
 
 ## 📑 目录  
 - [📁 文件结构](#📁文件结构)  
@@ -57,12 +57,12 @@ pip install swanlab==0.3.23
 ```
 
 ### 📊 准备数据
-1. 由于数据来自学生对Python题目的回答，存在数据相似度过高的问题。实验通过minHash方法来评估代码之间的相似度。对于相似度阈值大于0.7的代码记录，仅保留一条记录；而对于相似度不高于0.7的记录，则全部保留。
+1. 由于数据来自学生对 Python 题目的回答，存在数据相似度过高的问题。实验通过 minHash 方法来评估代码之间的相似度。对于相似度阈值大于 0.7 的代码记录，仅保留一条记录；而对于相似度不高于 0.7 的记录，则全部保留。
 ```bash
 python data/minHash_de.py
 ```
-2. 采用随机采样策略，将保留数据的40%作为后续实验的总数据集，按照9:1的比例将该数据集划分为训练集和测试集。
-3. 采用合成数据的方法来构造微调数据集，即通过调用商用大模型的API，来生成对训练集中的每一条记录的错误代码的详细分析及修正后的代码版本，将“修改后的代码”会被提交到CodeRunner进行评测。若能通过评测，则认为作答正确，该记录得以保留，生成最终的训练集。
+2. 采用随机采样策略，将保留数据的 40% 作为后续实验的总数据集，按照 9 : 1 的比例将该数据集划分为训练集和测试集。
+3. 采用合成数据的方法来构造微调数据集，即通过调用商用大模型的 API ，来生成对训练集中的每一条记录的错误代码的详细分析及修正后的代码版本，将“修改后的代码”会被提交到 CodeRunner 进行评测。若能通过评测，则认为作答正确，该记录得以保留，生成最终的训练集。
 4. 将训练数据放置在 data/ 目录下，并确保格式符合模型输入要求。数据格式如下：
 ```json
 {
@@ -73,7 +73,7 @@ python data/minHash_de.py
 ```
 
 ### 📦 加载模型
-使用modelscope中的snapshot_download下载模型，然后加载到 Transformers 中进行训练：
+使用 modelscope 中的 snapshot_download 下载模型，然后加载到 Transformers 中进行训练：
 ```python
 from modelscope import snapshot_download, AutoTokenizer
 from transformers import AutoModelForCausalLM, TrainingArguments, Trainer, DataCollatorForSeq2Seq
@@ -89,18 +89,18 @@ model.enable_input_require_grads()  # 开启梯度检查点时，要执行该方
 ```
 
 ### 🎛️ 开始微调
-1. 下载并加载Qwen2.5-7B-Coder-Instruct模型
-3. 加载数据集，取前3条数据进行主观评测
-4. 配置Lora，参数为r=64, lora_alpha=16, lora_dropout=0.1
-5. 使用SwanLab记录训练过程，包括超参数、指标和每个epoch的模型输出结果
-6. 训练3个epoch
+1. 下载并加载 Qwen2.5-7B-Coder-Instruct 模型
+3. 加载数据集，取前 3 条数据进行主观评测
+4. 配置 Lora，参数为 r=64, lora_alpha=16, lora_dropout=0.1
+5. 使用 SwanLab 记录训练过程，包括超参数、指标和每个 epoch 的模型输出结果
+6. 训练 3 个 epoch
    
 运行以下命令以开始 LoRA 微调：
 ```bash
 python scripts/train.py
 ```
 
-注意：首次使用SwanLab，需要先在官网注册一个账号并在用户设置页面复制API Key，然后在训练开始提示登录时粘贴，后续无需再次登录。
+注意：首次使用 SwanLab，需要先在官网注册一个账号并在用户设置页面复制 API Key，然后在训练开始提示登录时粘贴，后续无需再次登录。
 
 ### 🧪 推理测试
 使用微调后的模型进行推理：
@@ -130,9 +130,9 @@ python scripts/request.py
 ```
 
 ## 🌟 模型效果
-微调后的模型在纠正代码错误上的准确率提升了26.17%，达到了81.76%。
+微调前、后的模型正确率分别为 55.59% 和 81.76% 。
 
-微调后的模型参数见[huggingface](https://huggingface.co/monidew/Code-AiHelper)
+微调后的模型参数见 [huggingface](https://huggingface.co/monidew/Code-AiHelper)
 
 ## 📜 许可证
 本项目基于 MIT License 发布。详情请参阅 [LICENSE](https://github.com/CPU-DS/Code-AiHelper/blob/main/LICENSE)。
