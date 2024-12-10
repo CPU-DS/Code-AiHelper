@@ -135,7 +135,7 @@ python scripts/request.py
 微调后的模型参数见[huggingface](https://huggingface.co/monidew/Code-AiHelper)
 
 ## 📜 许可证
-本项目基于 MIT License 发布。详情请参阅 LICENSE。
+本项目基于 MIT License 发布。详情请参阅 [LICENSE](https://github.com/CPU-DS/Code-AiHelper/blob/main/LICENSE)。
 
 ## 📬 联系方式
 如果你对本项目有任何疑问或建议，欢迎通过以下方式联系：
