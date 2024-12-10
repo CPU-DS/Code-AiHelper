@@ -1,6 +1,6 @@
 # Code-AiHelper 
 
-本项目展示了如何基于 transformers、peft 等框架，使用 Qwen2.5-7B-Instruct 模型在代码数据集上进行Lora微调训练，同时使用 SwanLab 监控训练过程与评估模型效果，以实现高效的参数调整和定制化应用。
+本项目展示了如何基于 transformers、peft 等框架，使用 Qwen2.5-Coder-7B-Instruct 模型在代码数据集上进行Lora微调训练，以实现高效的参数调整和定制化应用。
 
 ## 目录  
 - [文件结构](#文件结构)  
