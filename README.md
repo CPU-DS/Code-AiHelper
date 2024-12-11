@@ -120,13 +120,3 @@ python scripts/request.py
 微调前、后的模型正确率分别为 55.59% 和 81.76% 。
 
 微调后的模型参数见 [huggingface](https://huggingface.co/monidew/Code-AiHelper)
-
-## 📜 许可证
-本项目基于 MIT License 发布。详情请参阅 [LICENSE](https://github.com/CPU-DS/Code-AiHelper/blob/main/LICENSE)。
-
-## 📬 联系方式
-如果你对本项目有任何疑问或建议，欢迎通过以下方式联系：
-- [GitHub Issues](https://github.com/Jiangcl5/FineTuneModel/issues)
-
-欢迎 Star 和 Fork！😊
-
