@@ -8,7 +8,7 @@
 |-- data/                     # 训练和测试数据目录
     |-- minHash_de.py         # minHash 去重
     |-- train.json            # 训练数据集  
-    |-- test.json              # 测试数据集  
+    |-- test.json             # 测试数据集  
 |-- scripts/                  # 脚本目录  
     |-- train.py              # LoRA 微调训练脚本  
     |-- infer.py              # 推理脚本
